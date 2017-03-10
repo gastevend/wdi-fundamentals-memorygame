@@ -21,13 +21,16 @@ var cards = [
 	}
 ];
 var cardsInPlay = [];
+var resetButton = document.getElementsByTagName("button")[0];
 
 var checkForMatch = function () {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 			alert("You found a match!");
 		} else {
 			alert("Sorry, try again.");
+			resetButton.innerHTML = "Try Again!";
 		}
+	resetButton.disabled = false;
 };
 
 var flipCard = function () {
@@ -49,8 +52,30 @@ var createBoard = function () {
 		cardElement.setAttribute("data-id", i);
 		cardElement.addEventListener("click", flipCard);
 		document.getElementById("game-board").appendChild(cardElement);
+		resetButton.disabled = true;
 
 	}
 };
 
+// reset game function
+var resetBoard = function () {
+	for (i=0; i<cards.length; i++) {
+		document.getElementsByTagName("img")[i].setAttribute("src" , "images/back.png");
+	}
+	var cardsNumber = cardsInPlay.length;
+	for (i=0; i<cardsNumber; i++) {
+		cardsInPlay.pop();
+	}
+	resetButton.innerHTML = "Play Again!"
+	resetButton.disabled = true;
+	
+};
+
+// Play again button
+var playAgain = function () {
+	resetButton.addEventListener("click", resetBoard);
+};
+
+
 createBoard();
+playAgain();

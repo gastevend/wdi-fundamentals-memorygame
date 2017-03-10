@@ -69,6 +69,26 @@ img {
 	margin: 40px 8px;
 }
 
+button {
+	margin: 0px 30px 50px 30px;
+	height: 60px;
+	width: 120px;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: "Raleway", sans-serif;
+	background-color: rgba(241, 91, 49, 1);
+	color: #FFF;
+
+}
+
+button:focus {
+	outline: 0;
+}
+
+button:disabled {
+	background-color: gray;
+}
+
 footer {
 	text-transform: uppercase;
 	padding: 0 20px;
